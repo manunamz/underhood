@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>underhood icon candidates</title>
+<style>
+:root { --bg: #f4f6f4; --fg: #1c2320; --muted: #5a6560; --rule: #dde2de; color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.6 system-ui, sans-serif; padding: 40px max(16px, env(safe-area-inset-left)); }
+h1 { font: 600 24px/1.2 Georgia, serif; margin: 0 0 6px; }
+p { margin: 0 0 24px; color: var(--muted); max-width: 64ch; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1000px; }
+@media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.bg { border-radius: 8px; padding: 20px; border: 1px solid; display: grid; gap: 20px; }
+.bg.light { background: #fff; border-color: #d1d9e0; color: #1f2328; }
+.bg.dark { background: #0d1117; border-color: #30363d; color: #e6edf3; }
+.cap { font: 500 11px ui-monospace, monospace; text-transform: uppercase; letter-spacing: .06em; opacity: .6; }
+.cand { display: grid; gap: 8px; }
+.cand b { font-size: 14px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.big img { height: 60px; width: auto; }
+</style>
+</head>
+<body>
+<h1>Which icon for inference?</h1>
+<p>Each candidate in its six states (code only, model optional, fully loaded, code optional, model only, either), at real size and at 3×, on GitHub's light and dark README backgrounds.</p>
+<h1 style="font-size:19px">Label color</h1>
+<p>The left side of the badge, next to typical README badges.</p>
+<div class="grid" style="margin-bottom:40px">
+  <div class="bg light"><span class="cap">github light</span><div class="swatches"></div></div>
+  <div class="bg dark"><span class="cap">github dark</span><div class="swatches"></div></div>
+</div>
+<h1 style="font-size:19px">Inference icon</h1>
+<div class="grid">
+  <div class="bg light"><span class="cap">github light</span><div id="l"></div></div>
+  <div class="bg dark"><span class="cap">github dark</span><div id="d"></div></div>
+</div>
+<script>
+const COLORS = ['red', 'cherry', 'candy'];
+for (const el of document.querySelectorAll('.swatches')) {
+  el.style.display = 'grid'; el.style.gap = '12px';
+  for (const c of COLORS) el.insertAdjacentHTML('beforeend', `<div class="row"><img src="https://img.shields.io/badge/build-passing-4c1" height="20" alt=""><img src="https://img.shields.io/badge/license-MIT-007ec6" height="20" alt=""><img src="badges/colors/${c}.svg" height="20" alt="${c}"><span style="font-size:13px;opacity:.7">${c}</span></div>`);
+}
+const C = [
+  ['constellation', 'Constellation: the ✨ stars, joined by lines that stop just short of each star.'],
+  ['hub', 'Hub: one sparkle at the center of a small network.'],
+  ['sparkles', 'Sparkles (✨): a large star at the lower right with two small ones at the left, like the emoji. Reads as "AI" and is less like any one brand mark.'],
+  ['paths', 'Branching paths: several possible answers, one weighted choice. Non-deterministic, not random.'],
+  ['eye', 'Eye: perceives and judges. May read as surveillance.'],
+  ['spark', 'Sparkle: the industry\'s shorthand for "AI". Recognizable, but generic and close to brand marks.'],
+  ['die', 'Die: chance. Simple, but suggests "random."'],
+  ['curve', 'Bell curve: output drawn from a distribution, P(y | x).'],
+  ['net', 'Network: a trained model. Says nothing about randomness.'],
+];
+for (const id of ['l', 'd']) {
+  const el = document.getElementById(id);
+  el.style.display = 'grid'; el.style.gap = '24px';
+  for (const [icon, note] of C) {
+    const lv = ['code-only', 'model-optional', 'fully-loaded', 'code-optional', 'model-only', 'either'];
+    el.insertAdjacentHTML('beforeend', `<div class="cand"><b>${note}</b>
+      <div class="row">${lv.map(l => `<img src="badges/${icon}/${l}.svg" height="20" alt="${icon} ${l}">`).join('')}</div>
+      <div class="row big">${lv.slice(2, 3).map(l => `<img src="badges/${icon}/${l}.svg" alt="${icon} ${l}">`).join('')}</div></div>`);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "@manunamz/underhood",
+  "version": "0.0.0",
+  "description": "A README badge that says whether a project runs deterministic code, model inference, or both.",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node src/build.js"
+  },
+  "license": "MIT"
+}

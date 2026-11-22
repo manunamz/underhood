@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>underhood</title>
+<meta name="description" content="A README badge that says whether a project runs deterministic code, model inference, or both.">
+<link rel="icon" href="badges/fully-loaded.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; the badge is drawn huge in the hero, then every section returns to it at real size. */
+:root {
+  --bg: #f4f6f4;
+  --surface: #ffffff;
+  --fg: #1c2320;
+  --muted: #5a6560;
+  --rule: #dde2de;
+  --accent: #b3261e;
+  --code-bg: #eaeeeb;
+  --red: #b3261e;
+  --red-deep: #8f1d21;
+  --display: "Fraunces", Georgia, serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #121614; --surface: #1a1f1d; --fg: #e3e8e5; --muted: #9aa49f; --rule: #2b322f;
+  --accent: #e8675e; --code-bg: #212725; --red: #c0302a; --red-deep: #a3241f; color-scheme: dark;
+} }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 var(--body); }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 max(16px, env(safe-area-inset-left)) 0 max(16px, env(safe-area-inset-right)); }
+section { padding-block: 56px; border-top: 1px solid var(--rule); }
+h1, h2 { font-family: var(--display); text-wrap: balance; }
+h1 { font-weight: 650; font-size: clamp(40px, 7vw, 64px); line-height: 1; margin: 0 0 12px; letter-spacing: -.01em; }
+h2 { font-weight: 500; font-size: clamp(24px, 3.4vw, 32px); line-height: 1.2; margin: 0 0 14px; }
+h3 { font: 600 12px/1 var(--body); letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+p { margin: 0 0 14px; max-width: 64ch; }
+a { color: var(--accent); text-underline-offset: 2px; }
+code { font: 0.88em var(--mono); background: var(--code-bg); padding: 1px 5px; border-radius: 3px; }
+.muted { color: var(--muted); }
+
+header { padding-block: 64px 56px; }
+.badges { margin: 0 0 22px; }
+.badges img { display: block; height: 20px; width: auto; }
+.cta { display: inline-block; margin-top: 24px; padding: 10px 18px; border-radius: 6px; background: var(--red); color: #fff; font: 600 15px var(--body); text-decoration: none; }
+.cta:hover { background: var(--red-deep); }
+.cta:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.tagline { font: 500 clamp(22px, 3.2vw, 28px)/1.25 var(--display); margin: 0 0 16px; text-wrap: balance; }
+.lede { font-size: 19px; color: var(--muted); max-width: 56ch; }
+
+.compare { overflow-x: auto; margin-top: 24px; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+thead th { font: 600 13px var(--body); border-bottom: 2px solid var(--fg); }
+thead th span { display: inline-flex; align-items: center; gap: 8px; }
+tbody th { font-weight: 500; color: var(--muted); width: 26%; }
+.hd-icon { display: block; height: 22px; width: auto; }
+
+.cite { font-size: 13.5px; color: var(--muted); margin-top: 16px; }
+.why { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 24px; }
+@media (max-width: 720px) { .why { grid-template-columns: minmax(0, 1fr); gap: 22px; } }
+.why > div { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.why img { height: 30px; width: auto; justify-self: start; }
+.why .swatch { width: 54px; height: 30px; border-radius: 3px; background: #b3261e; }
+.why b { font-weight: 600; }
+.why p { margin: 0; color: var(--muted); font-size: 15px; }
+.footnote { font-size: 14.5px; color: var(--muted); }
+.footnote p { max-width: 70ch; }
+
+.legend { overflow-x: auto; margin-top: 24px; }
+.legend table { min-width: 520px; }
+.legend thead th { font: 600 13px var(--body); }
+.legend tbody th { width: 16%; font: 500 14px var(--body); color: var(--muted); vertical-align: middle; }
+.legend tbody th span { display: block; font: 500 22px/1 var(--mono); color: var(--fg); margin-bottom: 4px; }
+.legend td { width: 42%; }
+.legend td img { display: block; width: 72px; height: 40px; margin-bottom: 8px; }
+.legend td b { display: block; font-weight: 600; }
+.legend td span { color: var(--muted); font-size: 14.5px; }
+
+.rulings { margin-top: 24px; display: grid; }
+.ruling { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 20px; align-items: start; padding-block: 16px; border-bottom: 1px solid var(--rule); }
+.ruling:first-child { border-top: 1px solid var(--rule); }
+@media (max-width: 560px) { .ruling { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
+.verdict { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding-top: 2px; }
+.verdict img { display: block; height: 20px; width: auto; }
+.verdict b { font: 600 13px var(--body); }
+.verdict .or { font-size: 12px; color: var(--muted); }
+.verdict .none { font: 600 12px var(--body); padding: 2px 8px; border: 1px dashed var(--muted); border-radius: 3px; color: var(--muted); }
+.ruling .case { font-weight: 600; }
+.ruling .why { margin: 2px 0 0; color: var(--muted); font-size: 15px; max-width: 64ch; }
+
+.picker { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+fieldset { margin: 0; padding: 0; border: 0; display: grid; gap: 8px; min-width: 0; }
+legend { font: 600 13px var(--body); padding: 0 0 8px; }
+.opt { position: relative; display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 12px; align-items: center; padding: 10px 12px; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; cursor: pointer; }
+.opt:hover { border-color: var(--muted); }
+.opt:has(input:checked) { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.opt:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.opt input { position: absolute; opacity: 0; pointer-events: none; }
+.opt img { width: 54px; height: 30px; }
+.opt b { display: block; font-weight: 600; font-size: 14.5px; }
+.opt span { font-size: 13.5px; color: var(--muted); }
+.result { margin-top: 20px; padding: 20px; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; display: grid; gap: 14px; }
+.result .name { font: 500 13px var(--mono); color: var(--muted); }
+.result img { height: 40px; width: auto; justify-self: start; }
+.result .md { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+.result pre { margin: 0; overflow-x: auto; background: var(--code-bg); border-radius: 5px; padding: 9px 11px; font: 12.5px/1.5 var(--mono); }
+.result .invalid { margin: 0; color: var(--muted); }
+button { font: 500 13px var(--body); color: var(--fg); background: transparent; border: 1px solid var(--rule); border-radius: 5px; padding: 7px 12px; cursor: pointer; }
+button:hover { border-color: var(--muted); }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+footer { padding-block: 32px 56px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>underhood</h1>
+  <p class="badges"><img src="badges/model-optional.svg" alt="underhood: deterministic code, optional inference" height="20"></p>
+  <p class="tagline">What's under the hood: code, a model, or both?</p>
+  <p class="lede">underhood is a README badge with two checkboxes. The mech gear stands for deterministic code. The magic stands for inference or AI. You can tell at a glance whether a project can give the same answer twice, be tested with unit tests or evals, and whether the software might have an opinion of its own.</p>
+  <a class="cta" href="#add">Make your own</a>
+</header>
+
+<section id="difference">
+  <h3>The difference</h3>
+  <h2>Deterministic code and inference code</h2>
+  <p>Deterministic code follows rules someone wrote down. Give it the same input and it returns the same output, every time. You can read the source to find out why it did what it did.</p>
+  <p>Inference code hands the decision to a trained model. Its behavior lives in weights and prompts instead of source you can trace. The output is drawn from a distribution, P(y | x), so it can change between runs, between model versions, and between providers, even when your own code hasn't changed.</p>
+  <div class="compare">
+    <table>
+      <thead><tr><th></th><th><span><img class="hd-icon" src="badges/parts/mech.svg" alt="">Mech: deterministic</span></th><th><span><img class="hd-icon" src="badges/parts/model.svg" alt="">Magic: inference</span></th></tr></thead>
+      <tbody>
+        <tr><th>Where the behavior lives</th><td>Source code you can read</td><td>Model weights and prompts</td></tr>
+        <tr><th>Same input twice</th><td>Same output</td><td>Possibly a different output</td></tr>
+        <tr><th>How you check it</th><td>Tests that pass or fail</td><td>Evals that score a success rate</td></tr>
+        <tr><th>When it changes</th><td>When someone edits the code</td><td>Also when the model, prompt or provider changes</td></tr>
+        <tr><th>What it needs to run</th><td>A CPU</td><td>A model: local weights or an API key and a network</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="read">
+  <h3>Reading the badge</h3>
+  <h2>The mech, the magic, and their marks</h2>
+  <p>The badge describes what happens when the shipped program runs, not how it was written. The mech is on the left and the magic is on the right. Each gets its own mark. Something has to be able to run, so if one side is ✗, the other is ✓. Both sides can be ~ when either one can do the job alone.</p>
+  <div class="legend">
+    <table>
+      <thead><tr><th></th><th>Mech: deterministic code</th><th>Magic: inference</th></tr></thead>
+      <tbody>
+        <tr>
+          <th><span>✓</span>required</th>
+          <td><img src="badges/parts/mech-check.svg" alt="mech with check" width="72" height="40"><b>Needs its own code</b><span>The project's logic makes real decisions: parsing, branching, validation, transforming data.</span></td>
+          <td><img src="badges/parts/model-check.svg" alt="magic with check" width="72" height="40"><b>Needs a model</b><span>The main thing the project does calls a trained model.</span></td>
+        </tr>
+        <tr>
+          <th><span>~</span>optional</th>
+          <td><img src="badges/parts/mech-tilde.svg" alt="mech with tilde" width="72" height="40"><b>Has code, doesn't need it</b><span>Scripts or tools help, but the model can do the job without them.</span></td>
+          <td><img src="badges/parts/model-tilde.svg" alt="magic with tilde" width="72" height="40"><b>Can use a model, doesn't need it</b><span>Everything works with the model turned off. The model adds extra features.</span></td>
+        </tr>
+        <tr>
+          <th><span>✗</span>absent</th>
+          <td><img src="badges/parts/mech-x.svg" alt="mech with x" width="72" height="40"><b>No code at all</b><span>The project is only prompts, skills or instructions for a model. Almost nothing is like this yet.</span></td>
+          <td><img src="badges/parts/model-x.svg" alt="magic with x" width="72" height="40"><b>No model runs</b><span>Same input, same output, every time.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="edge-cases">
+  <h3>Edge cases</h3>
+  <h2>What counts</h2>
+  <div class="rulings">
+    <div class="ruling"><div><div class="case">The code was written with an AI assistant.</div><p class="why">The badge describes how the program runs, not how it was written.</p></div><div class="verdict"><img src="badges/parts/model-x.svg" alt="magic ✗"><b>No magic</b></div></div>
+    <div class="ruling"><div><div class="case">The model runs at temperature 0 with a fixed seed.</div><p class="why">The output still depends on weights you don't control, and a hosted model can change under you.</p></div><div class="verdict"><img src="badges/parts/model-check.svg" alt="magic ✓"><b>Magic</b></div></div>
+    <div class="ruling"><div><div class="case">Embeddings, search ranking or a small classifier.</div><p class="why">These are Software 2.0: trained weights decide the output.</p></div><div class="verdict"><img src="badges/parts/model-check.svg" alt="magic ✓"><b>Magic</b></div></div>
+    <div class="ruling"><div><div class="case">A model only runs in development, tests or CI.</div><p class="why">Only the shipped program's runtime matters.</p></div><div class="verdict"><img src="badges/parts/model-x.svg" alt="magic ✗"><b>No magic</b></div></div>
+    <div class="ruling"><div><div class="case">A library that wraps a model API.</div><p class="why">Calling the model is what the library is for, and it still has its own logic: requests, retries, parsing.</p></div><div class="verdict"><img src="badges/fully-loaded.svg" alt="mech ✓, magic ✓"></div></div>
+    <div class="ruling"><div><div class="case">A set of prompts or skills with a small loader script.</div><p class="why">The loader is still code, so the mech is never ✗. Use ~ if the skills work without the loader and ✓ if they don't.</p></div><div class="verdict"><img src="badges/parts/mech-tilde.svg" alt="mech ~"><span class="or">or</span><img src="badges/parts/mech-check.svg" alt="mech ✓"></div></div>
+    <div class="ruling"><div><div class="case">No code and no model, like a docs repo.</div><p class="why">Nothing runs, so the badge doesn't apply.</p></div><div class="verdict"><span class="none">No badge</span></div></div>
+  </div>
+</section>
+
+<section id="add">
+  <h3>Add it to a README</h3>
+  <h2>Make your badge</h2>
+  <p>Pick a mark for each side. The snippet links the badge back to this page, so anyone who clicks it can find out what it means.</p>
+  <form class="picker" id="picker">
+    <fieldset>
+      <legend>Mech: deterministic code</legend>
+      <label class="opt"><input type="radio" name="mech" id="mech-check" value="check" checked><img src="badges/parts/mech-check.svg" alt=""><div><b>✓ required</b><span>Needs its own code</span></div></label>
+      <label class="opt"><input type="radio" name="mech" id="mech-tilde" value="tilde"><img src="badges/parts/mech-tilde.svg" alt=""><div><b>~ optional</b><span>Has code, doesn't need it</span></div></label>
+      <label class="opt"><input type="radio" name="mech" id="mech-x" value="x"><img src="badges/parts/mech-x.svg" alt=""><div><b>✗ absent</b><span>No code at all</span></div></label>
+    </fieldset>
+    <fieldset>
+      <legend>Magic: inference</legend>
+      <label class="opt"><input type="radio" name="model" id="model-check" value="check" checked><img src="badges/parts/model-check.svg" alt=""><div><b>✓ required</b><span>Needs a model</span></div></label>
+      <label class="opt"><input type="radio" name="model" id="model-tilde" value="tilde"><img src="badges/parts/model-tilde.svg" alt=""><div><b>~ optional</b><span>Can use a model, doesn't need it</span></div></label>
+      <label class="opt"><input type="radio" name="model" id="model-x" value="x"><img src="badges/parts/model-x.svg" alt=""><div><b>✗ absent</b><span>No model runs</span></div></label>
+    </fieldset>
+  </form>
+  <div class="result" aria-live="polite">
+    <div id="valid">
+      <div style="display:grid;gap:14px">
+        <span class="name" id="level"></span>
+        <img id="preview" alt="" height="40">
+        <div class="md"><pre id="md"></pre><button type="button" id="copy">Copy</button></div>
+      </div>
+    </div>
+    <p class="invalid" id="invalid" hidden>If one side is ✗, the other has to be ✓, or nothing the project needs can run. A project with no code and no model, like a docs repo, should leave the badge off.</p>
+  </div>
+</section>
+
+<section id="why">
+  <h3>Design</h3>
+  <h2>Why it looks this way</h2>
+  <div class="why">
+    <div>
+      <span class="swatch" aria-hidden="true"></span>
+      <b>Classic car red</b>
+      <p>The badge answers "what's under the hood?" for the tools we use, so its color comes from the car. Red also means caution. This is a fast-moving field, and it's worth knowing what you're running before you trust it.</p>
+    </div>
+    <div>
+      <img src="badges/parts/mech-check.svg" alt="">
+      <b>Mech, drawn as a gear</b>
+      <p>Gears are the plainest picture of a machine: the parts mesh the same way every time, so turning the input turns the output by exactly the same amount. That's deterministic code.</p>
+    </div>
+    <div>
+      <img src="badges/parts/model-check.svg" alt="">
+      <b>Magic, drawn as a sparkle</b>
+      <p>The ✨ sparkle is already how the field marks AI features, so people recognize it at a glance.</p>
+    </div>
+  </div>
+</section>
+
+<section id="history" class="footnote">
+  <h3>Historical note</h3>
+  <p>The split follows Andrej Karpathy's Software 1.0, 2.0 and 3.0. Software 1.0 is code a programmer writes. Software 2.0 is neural network weights that an optimizer finds from data. Software 3.0 is a large language model programmed in plain English. The mech marks 1.0. The magic marks 2.0 and 3.0, since both run a trained model.</p>
+  <p>Karpathy has also described 2.0 gradually replacing 1.0 code, as neural networks took over more of Tesla's Autopilot. A project with no 1.0 code at all barely exists today. That is the direction things are moving, so the mech can be crossed out.</p>
+  <p class="cite">Sources: <a href="https://karpathy.medium.com/software-2-0-a64152b37c35">“Software 2.0”</a> (2017) and <a href="https://www.youtube.com/watch?v=LCEmiRjPEtQ">“Software Is Changing (Again)”</a>, YC AI Startup School (2025).</p>
+</section>
+
+<footer>underhood · MIT · <a href="https://github.com/manunamz/underhood">source</a></footer>
+</div>
+
+<script>
+const BASE = 'https://manunamz.github.io/underhood';
+// mech mark + model mark → level; any other pair is invalid (see SPEC.md)
+const LEVELS = {
+  'check x':     ['code-only', 'no magic'],
+  'check tilde': ['model-optional', 'model optional'],
+  'check check': ['fully-loaded', 'fully loaded'],
+  'tilde check': ['code-optional', 'code optional'],
+  'x check':     ['model-only', 'model only'],
+  'tilde tilde': ['either', 'code or model'],
+};
+const $ = id => document.getElementById(id);
+const picker = $('picker');
+const btn = $('copy');
+
+function update() {
+  const key = `${picker.mech.value} ${picker.model.value}`;
+  const lvl = LEVELS[key];
+  $('valid').hidden = !lvl;
+  $('invalid').hidden = !!lvl;
+  if (!lvl) return;
+  const [level, says] = lvl;
+  $('level').textContent = level;
+  $('preview').src = `badges/${level}.svg`;
+  $('preview').alt = `underhood: ${says}`;
+  $('md').textContent = `[![underhood: ${says}](${BASE}/badges/${level}.svg)](${BASE})`;
+}
+
+picker.addEventListener('change', update);
+btn.addEventListener('click', () => {
+  navigator.clipboard.writeText($('md').textContent).then(
+    () => { btn.textContent = 'Copied'; setTimeout(() => (btn.textContent = 'Copy'), 1400); },
+    () => { const r = document.createRange(); r.selectNodeContents($('md')); getSelection().removeAllRanges(); getSelection().addRange(r); }
+  );
+});
+update();
+</script>
+</body>
+</html>
