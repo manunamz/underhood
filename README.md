@@ -7,7 +7,13 @@ A README badge that says whether a project runs deterministic code, model infere
 - ⚙ **mech**: deterministic code (Software 1.0)
 - ✨ **magic**: inference from a trained model (Software 2.0 / 3.0)
 
-Each item is ✓ (required), ~ (optional) or ✗ (absent), which gives six states: ⚙✓✨✗ code-only, ⚙✓✨~ model-optional, ⚙✓✨✓ fully-loaded, ⚙~✨✓ code-optional, ⚙✗✨✓ model-only, and ⚙~✨~ either (runs as pure code or pure inference). See [SPEC.md](SPEC.md) for the definitions and [the landing page](https://underhood-badge.netlify.app) for the explanation the badge links to.
+Each item can be:
+
+- ✓ (required)
+- ~ (optional)
+- ✗ (absent)
+
+See [SPEC.md](SPEC.md) for the definitions and [the landing page](https://underhood-badge.netlify.app) for the explanation the badge links to.
 
 ## Layout
 
