@@ -1,13 +1,13 @@
 # underhood
 
-[![underhood: no magic](https://manunamz.github.io/underhood/badges/code-only.svg)](https://manunamz.github.io/underhood)
+[![underhood: no magic](docs/badges/code-only.svg)](https://underhood-badge.netlify.app)
 
 A README badge that says whether a project runs deterministic code, model inference, or both.
 
 - ⚙ **mech**: deterministic code (Software 1.0)
 - ✨ **magic**: inference from a trained model (Software 2.0 / 3.0)
 
-Each item is ✓ (required), ~ (optional) or ✗ (absent), which gives six states: ⚙✓✨✗ code-only, ⚙✓✨~ model-optional, ⚙✓✨✓ fully-loaded, ⚙~✨✓ code-optional, ⚙✗✨✓ model-only, and ⚙~✨~ either (runs as pure code or pure inference). See [SPEC.md](SPEC.md) for the definitions and [the landing page](https://manunamz.github.io/underhood) for the explanation the badge links to.
+Each item is ✓ (required), ~ (optional) or ✗ (absent), which gives six states: ⚙✓✨✗ code-only, ⚙✓✨~ model-optional, ⚙✓✨✓ fully-loaded, ⚙~✨✓ code-optional, ⚙✗✨✓ model-only, and ⚙~✨~ either (runs as pure code or pure inference). See [SPEC.md](SPEC.md) for the definitions and [the landing page](https://underhood-badge.netlify.app) for the explanation the badge links to.
 
 ## Layout
 
@@ -17,4 +17,4 @@ Each item is ✓ (required), ~ (optional) or ✗ (absent), which gives six state
 
 ## Hosting
 
-Serve `docs/` with GitHub Pages (Settings → Pages → branch `main`, folder `/docs`). The badge URLs assume `https://manunamz.github.io/underhood`.
+Netlify builds `main` and publishes `docs/` (see `netlify.toml`) at https://underhood-badge.netlify.app. Badge URLs in other READMEs point there; this README loads its own badge from the repo.

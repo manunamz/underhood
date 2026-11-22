@@ -62,12 +62,12 @@ Remove the item and check whether the README's first usage example still works. 
 Badges link to the landing page so readers can find out what they mean:
 
 ```md
-[![underhood: no magic](https://manunamz.github.io/underhood/badges/code-only.svg)](https://manunamz.github.io/underhood)
-[![underhood: model optional](https://manunamz.github.io/underhood/badges/model-optional.svg)](https://manunamz.github.io/underhood)
-[![underhood: fully loaded](https://manunamz.github.io/underhood/badges/fully-loaded.svg)](https://manunamz.github.io/underhood)
-[![underhood: code optional](https://manunamz.github.io/underhood/badges/code-optional.svg)](https://manunamz.github.io/underhood)
-[![underhood: model only](https://manunamz.github.io/underhood/badges/model-only.svg)](https://manunamz.github.io/underhood)
-[![underhood: code or model](https://manunamz.github.io/underhood/badges/either.svg)](https://manunamz.github.io/underhood)
+[![underhood: no magic](https://underhood-badge.netlify.app/badges/code-only.svg)](https://underhood-badge.netlify.app)
+[![underhood: model optional](https://underhood-badge.netlify.app/badges/model-optional.svg)](https://underhood-badge.netlify.app)
+[![underhood: fully loaded](https://underhood-badge.netlify.app/badges/fully-loaded.svg)](https://underhood-badge.netlify.app)
+[![underhood: code optional](https://underhood-badge.netlify.app/badges/code-optional.svg)](https://underhood-badge.netlify.app)
+[![underhood: model only](https://underhood-badge.netlify.app/badges/model-only.svg)](https://underhood-badge.netlify.app)
+[![underhood: code or model](https://underhood-badge.netlify.app/badges/either.svg)](https://underhood-badge.netlify.app)
 ```
 
 ## Rendering

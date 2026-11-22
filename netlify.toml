@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "docs"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# badges are embedded in other sites' READMEs; let GitHub's image proxy re-fetch them reasonably often
+[[headers]]
+  for = "/badges/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Access-Control-Allow-Origin = "*"
