@@ -1,5 +1,5 @@
-// Writes docs/badges/<level>.svg for the default icon, docs/badges/<icon>/<level>.svg for each candidate,
-// and docs/badges/parts/{mech,model}-<mark>.svg (single halves) for the landing page's legend.
+// Writes site/badges/<level>.svg for the default icon, site/badges/<icon>/<level>.svg for each candidate,
+// and site/badges/parts/{mech,model}-<mark>.svg (single halves) for the landing page's legend.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,7 +8,7 @@ import { badge, part, LEVELS, MARK_NAMES, LABEL_COLORS } from './badge.js';
 export const DEFAULT_ICON = 'sparkles';
 const CANDIDATES = ['die', 'curve', 'net', 'paths', 'eye', 'spark', 'sparkles', 'constellation', 'hub'];
 
-const out = join(dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'badges');
+const out = join(dirname(fileURLToPath(import.meta.url)), '..', 'site', 'badges');
 
 const write = (dir, icon) => {
   mkdirSync(dir, { recursive: true });

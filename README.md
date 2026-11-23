@@ -1,6 +1,6 @@
 # underhood
 
-[![underhood: no magic](docs/badges/code-only.svg)](https://underhood-badge.netlify.app)
+[![underhood: no magic](site/badges/code-only.svg)](https://underhood-badge.netlify.app)
 
 A README badge that says whether a project runs deterministic code, model inference, or both.
 
@@ -18,9 +18,9 @@ See [SPEC.md](SPEC.md) for the definitions and [the landing page](https://underh
 ## Layout
 
 - `src/badge.js`: renders the badge SVG for a level and icon
-- `src/build.js`: writes `docs/badges/*.svg` (`npm run build`)
-- `docs/`: the GitHub Pages site (landing page, badges, `icons.html` icon comparison)
+- `src/build.js`: writes `site/badges/*.svg` (`npm run build`)
+- `site/`: the published site (landing page, badges, `icons.html` icon comparison)
 
 ## Hosting
 
-Netlify builds `main` and publishes `docs/` (see `netlify.toml`) at https://underhood-badge.netlify.app. Badge URLs in other READMEs point there; this README loads its own badge from the repo.
+Netlify builds `main` and publishes `site/` (see `netlify.toml`) at https://underhood-badge.netlify.app. Badge URLs in other READMEs point there; this README loads its own badge from the repo.
