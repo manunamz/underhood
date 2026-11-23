@@ -1,0 +1,4 @@
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1200px; height: 675px; overflow: hidden; }
+body { background: #f4f6f4; color: #1c2320; font-family: "IBM Plex Sans", system-ui, sans-serif; }
+.sig { position: absolute; right: 56px; bottom: 40px; font: 500 20px "IBM Plex Mono", ui-monospace, monospace; color: #5a6560; }

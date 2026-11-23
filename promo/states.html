@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="common.css">
+<style>
+.wrap { padding: 56px 64px; position: relative; height: 100%; }
+h1 { font: 650 76px/1 "Fraunces", Georgia, serif; letter-spacing: -.01em; }
+.tag { margin-top: 12px; font-size: 28px; color: #5a6560; }
+.grid { margin-top: 64px; display: grid; grid-template-columns: repeat(3, max-content); gap: 44px 52px; }
+.cell { display: grid; gap: 10px; }
+.cell img { height: 44px; width: auto; }
+.cell span { font: 500 19px "IBM Plex Mono", ui-monospace, monospace; color: #5a6560; }
+.key { position: absolute; left: 64px; bottom: 40px; font-size: 21px; color: #1c2320; display: flex; gap: 28px; }
+.key b { font-family: "IBM Plex Mono", monospace; }
+.key span { display: inline-flex; align-items: center; gap: 8px; }
+.key img { height: 26px; width: auto; }
+</style></head><body><div class="wrap">
+<h1>underhood</h1>
+<p class="tag">What's under the hood: code, a model, or both?</p>
+<div class="grid">
+  <div class="cell"><img src="../docs/badges/code-only.svg"><span>code-only · no magic</span></div>
+  <div class="cell"><img src="../docs/badges/model-optional.svg"><span>model-optional</span></div>
+  <div class="cell"><img src="../docs/badges/fully-loaded.svg"><span>fully-loaded</span></div>
+  <div class="cell"><img src="../docs/badges/code-optional.svg"><span>code-optional</span></div>
+  <div class="cell"><img src="../docs/badges/model-only.svg"><span>model-only</span></div>
+  <div class="cell"><img src="../docs/badges/either.svg"><span>either</span></div>
+</div>
+<div class="key"><span><img src="../docs/badges/parts/mech.svg"> mech</span><span><img src="../docs/badges/parts/model.svg"> magic</span><span><b>✓</b> needs it</span><span><b>~</b> can use it</span><span><b>✗</b> none</span></div>
+<div class="sig">underhood-badge.netlify.app</div>
+</div></body></html>

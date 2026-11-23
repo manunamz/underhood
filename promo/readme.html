@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="common.css">
+<style>
+body { background: #e9ecea; }
+.card { position: absolute; left: 80px; right: 80px; top: 50%; transform: translateY(-56%); background: #fff; border: 1px solid #d1d9e0; border-radius: 12px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color: #1f2328; overflow: hidden; }
+.bar { padding: 16px 28px; border-bottom: 1px solid #d1d9e0; font-size: 20px; font-weight: 600; color: #59636e; background: #f6f8fa; }
+.body { padding: 32px 40px 40px; display: grid; gap: 22px; }
+.repo { font-size: 46px; font-weight: 600; padding-bottom: 14px; border-bottom: 1px solid #d1d9e0; }
+.shields { display: flex; gap: 8px; align-items: center; }
+.shield { display: inline-flex; height: 40px; border-radius: 6px; overflow: hidden; font: 22px/40px Verdana, Geneva, sans-serif; color: #fff; }
+.shield span { padding: 0 12px; }
+.shield .k { background: #555; }
+.shields img { height: 40px; width: auto; }
+p { font-size: 25px; line-height: 1.5; color: #1f2328; max-width: 30em; }
+.sig { color: #4a5550; }
+</style></head><body>
+<div class="card">
+  <div class="bar">README.md</div>
+  <div class="body">
+    <div class="repo">ticket-triage</div>
+    <div class="shields">
+      <span class="shield"><span class="k">build</span><span style="background:#4c1">passing</span></span>
+      <span class="shield"><span class="k">license</span><span style="background:#007ec6">MIT</span></span>
+      <img src="../docs/badges/model-optional.svg">
+    </div>
+    <p>Sorts support tickets by urgency. Works offline. Add an API key and a model also writes a one-line summary of each ticket.</p>
+  </div>
+</div>
+<div class="sig">underhood-badge.netlify.app</div>
+</body></html>
