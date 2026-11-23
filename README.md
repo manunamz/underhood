@@ -9,9 +9,9 @@ A README badge that says whether a project runs deterministic code, model infere
 
 Each item can be:
 
-- ✓ (required)
-- ~ (optional)
-- ✗ (absent)
+- ✓ green (required)
+- ~ yellow (optional)
+- ✗ red (absent)
 
 See [SPEC.md](SPEC.md) for the definitions and [the landing page](https://underhood-badge.netlify.app) for the explanation the badge links to.
 

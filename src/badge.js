@@ -20,6 +20,14 @@ export const LEVELS = {
 const BG = '#555d59';
 const FG = '#fff';
 
+// Traffic lights: go, caution, stop. The color says how much the project needs
+// that side, not how good the project is.
+const MARK_COLORS = {
+  check: '#4c9a1f',
+  tilde: '#b98a00',
+  x: '#c8372d',
+};
+
 // four-point star with concave sides, centered on (cx, cy) with tip radius r
 const star = (cx, cy, r) => {
   const a = 0.086 * r, b = 0.357 * r;
@@ -109,11 +117,6 @@ const H = 20;
 const LABEL = 'underhood';
 const LABEL_TEXT_W = 59; // "underhood" in 11px Verdana
 const LABEL_W = 6 + LABEL_TEXT_W + 6;
-export const LABEL_COLORS = {
-  red: '#b3261e',     // classic car red
-  cherry: '#8f1d21',  // darker, like an older paint job
-  candy: '#cc1f2f',   // candy apple, a little brighter
-};
 const W = LABEL_W + SEG * 2;
 
 const place = (svg, x, y, size) =>
@@ -133,14 +136,13 @@ export function part(icon, mark) {
   const body = mark ? segment(icon, mark, 0) : place(ICONS[icon], 6, 4, 12);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${H}" viewBox="0 0 ${w} ${H}" role="img" aria-label="${mark ? `${icon} ${mark}` : icon}">
 <clipPath id="r"><rect width="${w}" height="${H}" rx="3"/></clipPath>
-<rect width="${w}" height="${H}" fill="${BG}" clip-path="url(#r)"/>
+<rect width="${w}" height="${H}" fill="${mark ? MARK_COLORS[mark] : BG}" clip-path="url(#r)"/>
 ${body}
 </svg>
 `;
 }
 
-export function badge(level, { icon = 'sparkles', color = 'red' } = {}) {
-  const labelBg = LABEL_COLORS[color] ?? color;
+export function badge(level, { icon = 'sparkles' } = {}) {
   const lvl = LEVELS[level];
   if (!lvl) throw new Error(`unknown level "${level}" (expected: ${Object.keys(LEVELS).join(', ')})`);
   if (!ICONS[icon]) throw new Error(`unknown icon "${icon}"`);
@@ -148,7 +150,7 @@ export function badge(level, { icon = 'sparkles', color = 'red' } = {}) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}">
 <title>${label}</title>
 <clipPath id="r"><rect width="${W}" height="${H}" rx="3"/></clipPath>
-<g clip-path="url(#r)"><rect width="${LABEL_W}" height="${H}" fill="${labelBg}"/><rect x="${LABEL_W}" width="${SEG * 2}" height="${H}" fill="${BG}"/><rect x="${LABEL_W + SEG}" width="1" height="${H}" fill="#000" fill-opacity=".18"/></g>
+<g clip-path="url(#r)"><rect width="${LABEL_W}" height="${H}" fill="${BG}"/><rect x="${LABEL_W}" width="${SEG}" height="${H}" fill="${MARK_COLORS[lvl.cog]}"/><rect x="${LABEL_W + SEG}" width="${SEG}" height="${H}" fill="${MARK_COLORS[lvl.model]}"/><rect x="${LABEL_W + SEG}" width="1" height="${H}" fill="#000" fill-opacity=".18"/></g>
 <g fill="${FG}" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11" text-anchor="middle">
 <text x="${LABEL_W / 2}" y="15" fill="#010101" fill-opacity=".3" textLength="${LABEL_TEXT_W}" lengthAdjust="spacingAndGlyphs">${LABEL}</text>
 <text x="${LABEL_W / 2}" y="14" textLength="${LABEL_TEXT_W}" lengthAdjust="spacingAndGlyphs">${LABEL}</text>

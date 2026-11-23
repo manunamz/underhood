@@ -25,23 +25,12 @@ p { margin: 0 0 24px; color: var(--muted); max-width: 64ch; }
 <body>
 <h1>Which icon for inference?</h1>
 <p>Each candidate in its six states (code only, model optional, fully loaded, code optional, model only, either), at real size and at 3×, on GitHub's light and dark README backgrounds.</p>
-<h1 style="font-size:19px">Label color</h1>
-<p>The left side of the badge, next to typical README badges.</p>
-<div class="grid" style="margin-bottom:40px">
-  <div class="bg light"><span class="cap">github light</span><div class="swatches"></div></div>
-  <div class="bg dark"><span class="cap">github dark</span><div class="swatches"></div></div>
-</div>
 <h1 style="font-size:19px">Inference icon</h1>
 <div class="grid">
   <div class="bg light"><span class="cap">github light</span><div id="l"></div></div>
   <div class="bg dark"><span class="cap">github dark</span><div id="d"></div></div>
 </div>
 <script>
-const COLORS = ['red', 'cherry', 'candy'];
-for (const el of document.querySelectorAll('.swatches')) {
-  el.style.display = 'grid'; el.style.gap = '12px';
-  for (const c of COLORS) el.insertAdjacentHTML('beforeend', `<div class="row"><img src="https://img.shields.io/badge/build-passing-4c1" height="20" alt=""><img src="https://img.shields.io/badge/license-MIT-007ec6" height="20" alt=""><img src="badges/colors/${c}.svg" height="20" alt="${c}"><span style="font-size:13px;opacity:.7">${c}</span></div>`);
-}
 const C = [
   ['constellation', 'Constellation: the ✨ stars, joined by lines that stop just short of each star.'],
   ['hub', 'Hub: one sparkle at the center of a small network.'],

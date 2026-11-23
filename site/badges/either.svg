@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="143" height="20" viewBox="0 0 143 20" role="img" aria-label="underhood: deterministic code or inference, either alone">
 <title>underhood: deterministic code or inference, either alone</title>
 <clipPath id="r"><rect width="143" height="20" rx="3"/></clipPath>
-<g clip-path="url(#r)"><rect width="71" height="20" fill="#b3261e"/><rect x="71" width="72" height="20" fill="#555d59"/><rect x="107" width="1" height="20" fill="#000" fill-opacity=".18"/></g>
+<g clip-path="url(#r)"><rect width="71" height="20" fill="#555d59"/><rect x="71" width="36" height="20" fill="#b98a00"/><rect x="107" width="36" height="20" fill="#b98a00"/><rect x="107" width="1" height="20" fill="#000" fill-opacity=".18"/></g>
 <g fill="#fff" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11" text-anchor="middle">
 <text x="35.5" y="15" fill="#010101" fill-opacity=".3" textLength="59" lengthAdjust="spacingAndGlyphs">underhood</text>
 <text x="35.5" y="14" textLength="59" lengthAdjust="spacingAndGlyphs">underhood</text>

@@ -3,7 +3,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { badge, part, LEVELS, MARK_NAMES, LABEL_COLORS } from './badge.js';
+import { badge, part, LEVELS, MARK_NAMES } from './badge.js';
 
 export const DEFAULT_ICON = 'sparkles';
 const CANDIDATES = ['die', 'curve', 'net', 'paths', 'eye', 'spark', 'sparkles', 'constellation', 'hub'];
@@ -19,12 +19,6 @@ const write = (dir, icon) => {
 
 write(out, DEFAULT_ICON);
 for (const icon of CANDIDATES) write(join(out, icon), icon);
-
-const colors = join(out, 'colors');
-mkdirSync(colors, { recursive: true });
-for (const color of Object.keys(LABEL_COLORS)) {
-  writeFileSync(join(colors, `${color}.svg`), badge('model-optional', { icon: DEFAULT_ICON, color }));
-}
 
 const parts = join(out, 'parts');
 mkdirSync(parts, { recursive: true });
