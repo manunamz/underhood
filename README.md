@@ -17,9 +17,9 @@ See [SPEC.md](SPEC.md) for the definitions and [the landing page](https://underh
 
 ## Layout
 
-- `src/badge.js`: renders the badge SVG for a level and icon
+- `src/badge.js`: renders the badge SVG for a level
 - `src/build.js`: writes `site/badges/*.svg` (`npm run build`)
-- `site/`: the published site (landing page, badges, `icons.html` icon comparison)
+- `site/`: the published site (landing page and badges)
 
 ## Hosting
 
